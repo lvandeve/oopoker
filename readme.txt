@@ -48,7 +48,7 @@ AIs can be made to battle each other, or a single human can play against the AIs
 for his/her enjoyment.
 
 OOPoker is completely open source, it is licensed under GPL 3. It is hosted
-on sourceforge: http://sourceforge.net/projects/oopoker/
+here: https://github.com/lvandeve/oopoker
 
 Currently only open source C++ code AIs are supported, it doesn't support play
 over network or through encapsulated protocols at this time.
@@ -998,9 +998,9 @@ Feel free to contact me for requests related to OOPoker.
 My name is at the bottom of the copyright message. My email address is first name
 dot last name at gmail dot com.
 
-OOPoker is hosted on sourceforge: http://sourceforge.net/projects/oopoker/
+OOPoker is hosted here: https://github.com/lvandeve/oopoker
 
 ----------------------------------
 
-Copyright (c) 2010 Lode Vandevenne
+Copyright (c) 2010-2014 Lode Vandevenne
 All rights reserved.
