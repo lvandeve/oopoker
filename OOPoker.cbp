@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="OOPoker" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="default">
+				<Option output="OOPoker" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Unit filename="action.cpp" />
+		<Unit filename="action.h" />
+		<Unit filename="ai.cpp" />
+		<Unit filename="ai.h" />
+		<Unit filename="ai_blindlimp.cpp" />
+		<Unit filename="ai_blindlimp.h" />
+		<Unit filename="ai_call.cpp" />
+		<Unit filename="ai_call.h" />
+		<Unit filename="ai_checkfold.cpp" />
+		<Unit filename="ai_checkfold.h" />
+		<Unit filename="ai_human.cpp" />
+		<Unit filename="ai_human.h" />
+		<Unit filename="ai_raise.cpp" />
+		<Unit filename="ai_raise.h" />
+		<Unit filename="ai_random.cpp" />
+		<Unit filename="ai_random.h" />
+		<Unit filename="ai_smart.cpp" />
+		<Unit filename="ai_smart.h" />
+		<Unit filename="card.cpp" />
+		<Unit filename="card.h" />
+		<Unit filename="changelist.h" />
+		<Unit filename="combination.cpp" />
+		<Unit filename="combination.h" />
+		<Unit filename="deck.cpp" />
+		<Unit filename="deck.h" />
+		<Unit filename="event.cpp" />
+		<Unit filename="event.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="game.h" />
+		<Unit filename="host.cpp" />
+		<Unit filename="host.h" />
+		<Unit filename="host_terminal.cpp" />
+		<Unit filename="host_terminal.h" />
+		<Unit filename="info.cpp" />
+		<Unit filename="info.h" />
+		<Unit filename="io_terminal.cpp" />
+		<Unit filename="io_terminal.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="observer.cpp" />
+		<Unit filename="observer.h" />
+		<Unit filename="observer_log.cpp" />
+		<Unit filename="observer_log.h" />
+		<Unit filename="observer_statkeeper.cpp" />
+		<Unit filename="observer_statkeeper.h" />
+		<Unit filename="observer_terminal.cpp" />
+		<Unit filename="observer_terminal.h" />
+		<Unit filename="observer_terminal_quiet.cpp" />
+		<Unit filename="observer_terminal_quiet.h" />
+		<Unit filename="player.cpp" />
+		<Unit filename="player.h" />
+		<Unit filename="pokereval.cpp" />
+		<Unit filename="pokereval.h" />
+		<Unit filename="pokereval2.cpp" />
+		<Unit filename="pokereval2.h" />
+		<Unit filename="pokermath.cpp" />
+		<Unit filename="pokermath.h" />
+		<Unit filename="random.cpp" />
+		<Unit filename="random.h" />
+		<Unit filename="readme.txt" />
+		<Unit filename="rules.cpp" />
+		<Unit filename="rules.h" />
+		<Unit filename="statistics.cpp" />
+		<Unit filename="statistics.h" />
+		<Unit filename="table.cpp" />
+		<Unit filename="table.h" />
+		<Unit filename="tools_terminal.cpp" />
+		<Unit filename="tools_terminal.h" />
+		<Unit filename="unittest.cpp" />
+		<Unit filename="unittest.h" />
+		<Unit filename="util.cpp" />
+		<Unit filename="util.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
