@@ -415,21 +415,14 @@ bool betsSettled(int lastRaiseIndex, int current, int prev_current, const std::v
   }
   else
   {
-    if(prev_current == 0)
+    // check that the last raiser is the current player, or between the player after prev_current and current (meaning we skipped the raiser, e.g. due to being all-in)
+    int i = prev_current;
+    while(i != current)
     {
-      return current == lastRaiseIndex;
+      i = wrap(i + 1, players.size());
+      if(i == lastRaiseIndex) return true;
     }
-    else
-    {
-      int i = prev_current;
-      while(i != current)
-      {
-        i = wrap(i + 1, players.size());
-        if(i == lastRaiseIndex) return true;
-      }
-      return false;
-    }
-    
+    return false;
   }
 }
 
