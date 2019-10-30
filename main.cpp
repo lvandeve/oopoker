@@ -66,10 +66,10 @@ for his/her enjoyment.
 #include "unittest.h"
 #include "util.h"
 
-void doGame()
+// returns whether user wants to quit
+bool doGame()
 {
-  std::cout << "Welcome to OOPoker\n\
-Copyright (c) 2010-2014 Lode Vandevenne" << std::endl << std::endl;
+  std::cout << "Welcome to OOPoker\nCopyright (c) 2010-2019 Lode Vandevenne" << std::endl << std::endl;
 
   char c = 0;
 
@@ -81,7 +81,8 @@ Copyright (c) 2010-2014 Lode Vandevenne" << std::endl << std::endl;
 4: AI battle heads-up\n\
 r: random game (human)\n\
 c: calculator\n\
-u: unit test" << std::endl;
+u: unit test\n\
+q: quit" << std::endl;
   c = getChar();
   int gameType = 1;
   if(c == '1') gameType = 1;
@@ -91,23 +92,19 @@ u: unit test" << std::endl;
   else if(c == 'r') gameType = 5;
   else if(c == 'c')
   {
-
-    std::cout << "Choose Calculator\n\
-1: Pot Equity\n\
-2: Showdown" << std::endl;
+    std::cout << "Choose Calculator\n1: Pot Equity\n2: Showdown" << std::endl;
 
     char c2 = getChar();
     if(c2 == '1') runConsolePotEquityCalculator();
     else runConsoleShowdownCalculator();
-    return;
+    return false;
   }
   else if(c == 'u')
   {
     doUnitTest();
-    return;
+    return false;
   }
-  else if(c == 'q') return;
-
+  else if(c == 'q') return true;
 
 
   Rules rules;
@@ -140,7 +137,7 @@ c: rebuys, fixed custom amount of deals" << std::endl;
     rules.allowRebuy = true;
     rules.fixedNumberOfDeals = strtoval<int>(s);
   }
-  else if(c == 'q') return;
+  else if(c == 'q') return false;
 
   std::cout << std::endl << std::endl;
 
@@ -191,7 +188,7 @@ c: custom" << std::endl;
       rules.ante = strtoval<int>(s);
 
     }
-    else if(c == 'q') return;
+    else if(c == 'q') return false;
   }
   else
   {
@@ -287,15 +284,22 @@ c: custom" << std::endl;
   }
 
   game.doGame();
+  return false;
 }
 
 
 int main()
 {
-  doGame();
+  for(;;) {
+    bool quit = doGame();
+    if(quit) break;
+  }
 
-
-  pressAnyKey(); //prevent closing terminal window.
+#if defined(OS_WINDOWS)
+  //prevent closing terminal window in Windows, since that prevents seeing the result.
+  //in Linux, this is not necessary since Linux keeps the terminal window open if a program in it quits.
+  pressAnyKey();
+#endif
 
   return 0;
 }

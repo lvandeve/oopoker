@@ -21,12 +21,13 @@ along with OOPoker.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "card.h"
+#include "os.h"
 
 // TODO: this setting belongs more in io_terminal
 // CARDPRINTMODE: 0=letters (cdhs), 1=windows symbols (ascii), 2=linux symbols (unicode)
-#if defined(_WIN32)
-int CARDPRINTMODE = 1; 
-#elif defined(linux) || defined(__linux) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)
+#if defined(OS_WINDOWS)
+int CARDPRINTMODE = 1;
+#elif defined(OS_LINUX)
 // Requires linux terminal set to UTF-8
 int CARDPRINTMODE = 2;
 //int CARDPRINTMODE = 0;

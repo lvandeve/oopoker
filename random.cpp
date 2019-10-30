@@ -22,38 +22,39 @@ along with OOPoker.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "random.h"
 
+#include "os.h"
+
+#include <iostream>
+
 #if defined(_WIN32)
 
 #include <windows.h>
-#include <iostream>
 
 unsigned int getRandomUint()
 {
   unsigned int r;
 
   HMODULE hLib=LoadLibrary("ADVAPI32.DLL");
-  if (hLib) {
-   BOOLEAN (APIENTRY *pfn)(void*, ULONG) =
+  if(hLib) {
+    BOOLEAN (APIENTRY *pfn)(void*, ULONG) =
         (BOOLEAN (APIENTRY *)(void*,ULONG))GetProcAddress(hLib,"SystemFunction036");
-   if (pfn) {
-    char buff[4];
-    ULONG ulCbBuff = sizeof(buff);
-    if(pfn(buff,ulCbBuff)) {
-
-     // use buff full of random goop
-
-     r = buff[0] + 256 * buff[1] + 256 * 256 * buff[2] + 256 * 256 * 256 * buff[3];
-
+    if(pfn) {
+      char buff[4];
+      ULONG ulCbBuff = sizeof(buff);
+      if(pfn(buff,ulCbBuff)) {
+        // use buff full of random goop
+        r = buff[0] + 256 * buff[1] + 256 * 256 * buff[2] + 256 * 256 * 256 * buff[3];
+      }
     }
-   }
 
-   FreeLibrary(hLib);
+    FreeLibrary(hLib);
   }
 
   return r;
 }
 
-#elif defined(linux) || defined(__linux) || defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)
+// TODO: OS_UNKNOWN may not have /dev/urandom, provide alternative implementation
+#elif defined(OS_LINUX) || defined(OS_UNKNOWN)
 
 #include <string>
 #include <fstream>
@@ -63,6 +64,10 @@ unsigned int getRandomUint()
   unsigned int r;
   static std::string filename = "/dev/urandom";
   static std::ifstream file(filename.c_str(), std::ios::in|std::ios::binary|std::ios::ate);
+  if(!file) {
+    std::cerr << "no /dev/urandom found! Need a random source to operate. Quitting program." << std::endl;
+    std::exit(1);
+  }
   file.read((char*)(&r), sizeof(r));
   return r;
 }

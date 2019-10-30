@@ -514,12 +514,12 @@ void benchmarkEval7()
     int v = eval7_index(Card(i));
     cards[i] = v;
   }
-  
+
   static const int numSamples = 10000000;
-  
+
   std::cout << "Starting benchmark with " << numSamples << " evaluations " << std::endl;
   std::cout << "Start time: " << getDateString() << std::endl;
-  
+
   int test = 0;
 
   for(int i = 0; i < numSamples; i++)
@@ -527,7 +527,7 @@ void benchmarkEval7()
     shuffleN(cards, 52, 7);
     test += eval7(&cards[0]);
   }
-  
+
   std::cout << "End time: " << getDateString() << std::endl;
   std::cout << "Test value: " << test << std::endl; //ensure every calculation performed has some influence on this output to make sure nothing will be optimized away for the benchmark.
 
@@ -541,6 +541,15 @@ void benchmarkEval7()
   //}
   //std::cout << "done shuffling." << std::endl;
   //std::cout << "end time: " << getDateString() << std::endl;
+}
+
+void testCardPrint() {
+  std::cout << "Testing card print" << std::endl;
+  std::cout << Card(2, S_CLUBS).getShortNamePrintable() << std::endl;
+  std::cout << Card(6, S_DIAMONDS).getShortNamePrintable() << std::endl;
+  std::cout << Card(10, S_HEARTS).getShortNamePrintable() << std::endl;
+  std::cout << Card(14, S_SPADES).getShortNamePrintable() << std::endl;
+  std::cout << std::endl;
 }
 
 void doUnitTest()
@@ -565,7 +574,9 @@ void doUnitTest()
 
   testCombos();
   testCombosCompare();
-  
+
   benchmarkEval7();
+
+  testCardPrint();
 
 }
